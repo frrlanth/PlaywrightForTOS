@@ -5,15 +5,17 @@ const { defineConfig, devices } = require('@playwright/test');
 
 module.exports = defineConfig({
   testMatch: '**/*.spec.js',
+  timeout: 60000,
   fullyParallel: false,
   retries: 0,
   reporter: 'html',
   use: {
     channel: 'chrome',
     headless: false,
-    slowMo: 1000,
-    viewport: { width: 1152, height: 648 },
-    trace: 'on-first-retry',
+    slowMo: 100000,
+    deviceScaleFactor: 1,
+    //viewport: { width: 1152, height: 648 },
+    //trace: 'on-first-retry', // Enable trace collection for the first retry of each test. (Buka trace viewer di browser untuk melihat trace)
   },
 })
 
@@ -42,6 +44,8 @@ export default defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+
+    slowmo: 10000,
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
 
